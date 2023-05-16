@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Redirect or Move Button with Preloader</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ff64c6;
+            font-family: Arial, sans-serif;
+            background: #ff64c6;
+            animation-name: backdiv;
+            animation-duration: 1s;
+            animation-iteration-count: 4;
+
+        }
+
+        .preloader-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .heart {
+            width: 50px;
+            height: 50px;
+            background-color: #e90076;
+            transform: rotate(-45deg);
+            animation-name: beat;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+        .heart:after,
+        .heart:before {
+            content: "";
+            border-radius: 50%;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #e90076;
+        }
+
+        .heart:before {
+            top: -25px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: 25px;
+        }
+
+        @keyframes beat {
+            0% {
+                transform: scale(1) rotate(-45deg);
+            }
+
+            40% {
+                transform: scale(1.4) rotate(-45deg);
+            }
+        }
+
+        #content {
+            display: none;
+            text-align: center;
+        }
+
+        #content h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFD662;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .no-button {
+            margin-left: 10px;
+        }
+
+
+
+
+
+
+        @keyframes backdiv {
+            50% {
+                background: #fb7ec1;
+            }
+        }
+
+        @keyframes changeBackground {
+            0% {
+                background-color: #ffe6f2;
+            }
+
+            50% {
+                background-color: #f2e6ff;
+            }
+
+            100% {
+                background-color: #ffe6f2;
+            }
+        }
+
+
+
+        #hi-message {
+            font-family: 'Calligraffitti', cursive;
+            font-weight: 50;
+            font-size: 16vh;
+            position: absolute;
+            text-shadow: -15px 5px 20px #ced0d3;
+            top: 0;
+            /* Change the positioning to top */
+            left: 50%;
+            transform: translateX(-50%);
+            /* Only horizontally center the div */
+            letter-spacing: 0.02em;
+            color: #F9f1cc;
+            text-shadow: 5px 5px 0px #FFB650,
+                10px 10px 0px #FFD662,
+                15px 15px 0px #FF80BF,
+                20px 20px 0px #EF5097,
+                25px 25px 0px #6868AC,
+                30px 30px 0px #90B1E0;
+            white-space: nowrap;
+        }
+
+
+
+        .hi,
+        .name {
+            display: inline-block;
+        }
+
+
+        #message {
+            font-family: 'Calligraffitti', cursive;
+
+            font-size: 3rem;
+            position: absolute;
+            text-shadow: -15px 5px 20px #ced0d3;
+            top: 35vh;
+            left: 49%;
+            transform: translateX(-50%);
+            /* Only horizontally center the div */
+            letter-spacing: 0.02em;
+            color: #F9f1cc;
+            text-shadow: 5px 5px 0px #FFB650,
+                10px 10px 0px #FFD662,
+                15px 15px 0px #FF80BF,
+                20px 20px 0px #EF5097,
+                25px 25px 0px #6868AC,
+                30px 30px 0px #90B1E0;
+            white-space: nowrap;
+        }
+
+
+        .popup {
+            position: fixed;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff00ea;
+            padding: 20px;
+            border-radius: 5px;
+            font-size: 24px;
+            text-align: center;
+            z-index: 9999;
+        }
+
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <iframe style="display: none;" width="560" height="315" src="https://www.youtube.com/embed/mngVn8neQaI"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+
+    <div class="preloader-container">
+        <div class="heart"></div>
+    </div>
+
+    <div id="content">
+        <div id="hi-message">
+            <span class="hi">Hi</span>
+            <span class="name">Kasheefah</span>
+        </div>
+        <div id="message">Lets Go For Brunch</div>
+        <button id="yesButton" class="button">Yes</button>
+        <button id="noButton" class="button no-button">No</button>
+    </div>
+
+    <script>
+        var preloader = document.querySelector('.preloader-container');
+        var content = document.getElementById('content');
+        var yesButton = document.getElementById('yesButton');
+        var noButton = document.getElementById('noButton');
+
+        // Hide preloader after 4 seconds
+        setTimeout(function () {
+            preloader.style.display = "none";
+            content.style.display = "flex";
+        }, 4000);
+
+        yesButton.addEventListener("click", function () {
+            content.style.animationName = "fadeOut";
+            content.style.animationDuration = "1s";
+
+            setTimeout(function () {
+                content.style.display = "none";
+
+                var seeYouSoon = document.createElement("div");
+                seeYouSoon.innerText = "See you soon";
+                seeYouSoon.style.fontFamily = "'Calligraffitti', cursive";
+                seeYouSoon.style.fontWeight = "50";
+                seeYouSoon.style.fontSize = "16vh";
+                seeYouSoon.style.position = "fixed";
+                seeYouSoon.style.textShadow = "-15px 5px 20px #ced0d3, 5px 5px 0px #FFB650, 10px 10px 0px #FFD662, 15px 15px 0px #FF80BF, 20px 20px 0px #EF5097, 25px 25px 0px #6868AC, 30px 30px 0px #90B1E0";
+                seeYouSoon.style.top = "50%";
+                seeYouSoon.style.left = "50%";
+                seeYouSoon.style.transform = "translate(-50%, -50%)";
+                seeYouSoon.style.letterSpacing = "0.02em";
+                seeYouSoon.style.color = "#F9f1cc";
+                seeYouSoon.style.whiteSpace = "nowrap";
+                seeYouSoon.style.animationName = "fadeIn";
+                seeYouSoon.style.animationDuration = "3s";
+                document.body.appendChild(seeYouSoon);
+
+                setTimeout(function () {
+                    window.location.href = "https://www.youtube.com/watch?v=qtQJ0lQBan0";
+                }, 3000);
+            }, 1000);
+        });
+
+        noButton.addEventListener("click", function () {
+            var screenWidth = window.innerWidth;
+            var screenHeight = window.innerHeight;
+            var randomX = Math.floor(Math.random() * (screenWidth - 100)); // Adjust the button width (100) if needed
+            var randomY = Math.floor(Math.random() * (screenHeight - 100)); // Adjust the button height (100) if needed
+
+            noButton.style.position = "absolute";
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+        });
+    </script>
+
+
+
+</body>
+
+</html>
