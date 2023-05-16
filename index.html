@@ -21,7 +21,6 @@
             animation-name: backdiv;
             animation-duration: 1s;
             animation-iteration-count: 4;
-
         }
 
         .preloader-container {
@@ -77,28 +76,29 @@
         }
 
         #content h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 8vw;
+            /* Adjust the font size with vw (viewport width) unit */
+            margin-bottom: 2vw;
+            /* Adjust the margin with vw (viewport width) unit */
         }
 
         .button {
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #FFD662;
-            color: #ffffff;
-            border: none;
+            margin-top: 7rem;
+            padding: 2vw 4vw;
+            /* Adjust the padding with vw (viewport width) unit */
+            font-size: 4vw;
+            /* Adjust the font size with vw (viewport width) unit */
             border-radius: 5px;
             cursor: pointer;
+            background-color: #FFD662;
+            color: #ffffff;
+            border: purple;
         }
 
         .no-button {
-            margin-left: 10px;
+            margin-left: 2vw;
+            /* Adjust the margin with vw (viewport width) unit */
         }
-
-
-
-
-
 
         @keyframes backdiv {
             50% {
@@ -120,19 +120,17 @@
             }
         }
 
-
-
         #hi-message {
             font-family: 'Calligraffitti', cursive;
             font-weight: 50;
-            font-size: 16vh;
+            font-size: 12vw;
+            /* Adjust the font size with vw (viewport width) unit */
             position: absolute;
-            text-shadow: -15px 5px 20px #ced0d3;
+            text-shadow: -2vw 1vw 4vw #ced0d3;
+            /* Adjust the text shadow with vw (viewport width) unit */
             top: 0;
-            /* Change the positioning to top */
             left: 50%;
             transform: translateX(-50%);
-            /* Only horizontally center the div */
             letter-spacing: 0.02em;
             color: #F9f1cc;
             text-shadow: 5px 5px 0px #FFB650,
@@ -171,6 +169,7 @@
                 25px 25px 0px #6868AC,
                 30px 30px 0px #90B1E0;
             white-space: nowrap;
+            margin-bottom: 2vw;
         }
 
 
@@ -226,7 +225,7 @@
             <span class="hi">Hi</span>
             <span class="name">Kasheefah</span>
         </div>
-        <div id="message">Lets Go For Brunch</div>
+        <div id="message">Lets Go On a Date</div>
         <button id="yesButton" class="button">Yes</button>
         <button id="noButton" class="button no-button">No</button>
     </div>
